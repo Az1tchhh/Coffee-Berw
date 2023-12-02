@@ -47,7 +47,9 @@ export class CategoryComponent {
       this.selectedType = type;
     }
     this.isDropdownOpen.type = false;
-    event.stopPropagation();
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
     this.filterProducts();
   }
 
@@ -58,7 +60,9 @@ export class CategoryComponent {
       this.selectedSort = sort;
     }
     this.isDropdownOpen.sort = false;
-    event.stopPropagation();
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
     this.filterProducts();
   }
 

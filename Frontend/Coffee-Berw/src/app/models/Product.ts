@@ -9,5 +9,4 @@ export interface Product{
   count: number,
   image_url: string,
   url:string;
-
 }
