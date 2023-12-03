@@ -4,6 +4,7 @@ import { Sort } from '../models/Sort';
 import { Type } from '../models/Type';
 import { CategoryService } from '../category.service';
 import { ProductService } from '../product.service';
+import {AppRoutingModule} from "../app-routing.module";
 
 @Component({
   selector: 'app-category',
@@ -14,10 +15,12 @@ export class CategoryComponent {
   sorts: Sort[] = [];
   selectedSort: string = '';
   selectedType: string = '';
+  selectedSortBy:string ='';
   types: Type[] = [];
+  sorts_by = ['None','price'];
   @Output() productsFiltered = new EventEmitter<Product[]>();
   products!: Product[];
-
+  copy_products!:Product[];
   constructor(private categoryService: CategoryService, private productService: ProductService) {}
 
   ngOnInit(): void {
@@ -31,12 +34,13 @@ export class CategoryComponent {
     this.productService.getAllProducts().subscribe((data)=>{
       console.log("category", data)
       this.products = data;
+      this.copy_products = data;
     })
   }
 
-  isDropdownOpen = { type: false, sort: false};
+  isDropdownOpen = { type: false, sort: false, sort_by: false};
 
-  toggleDropdown(dropdown: 'type' | 'sort') {
+  toggleDropdown(dropdown: 'type' | 'sort' | 'sort_by') {
     this.isDropdownOpen[dropdown] = !this.isDropdownOpen[dropdown];
   }
 
@@ -87,5 +91,19 @@ export class CategoryComponent {
       console.log("filtered products:", filteredProducts)
       this.productsFiltered.emit(filteredProducts);
     }
+  }
+  sortItemsByNumericProperty(sort:string) {
+
+    if(sort === 'None'){
+      this.products.sort((a, b) => {
+        return a.id - b.id;
+      });
+    }
+    else {
+      this.products.sort((a, b) => {
+        return a.price - b.price;
+      });
+    }
+    this.productsFiltered.emit(this.products);
   }
 }

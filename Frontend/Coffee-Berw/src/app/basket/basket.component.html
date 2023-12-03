@@ -19,9 +19,7 @@
           <div class = "delete_box box-row  ">
             <button class = "delete_button" (click)="delete(order.products.id)">Delete</button>
           </div>
-          <ng-container *ngIf = "this.deletedSuccessMessage.includes(order.products.id.toString())">
-            <p>{{this.deletedSuccessMessage | slice:0:-1}}</p>
-          </ng-container>
+
         </div>
 
       </div>

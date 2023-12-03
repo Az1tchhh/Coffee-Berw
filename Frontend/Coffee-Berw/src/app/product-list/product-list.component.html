@@ -40,9 +40,7 @@
               <button class = "buy_button order_button" style="cursor: pointer" (click) = "addToCard(this.username, product.id)">Add</button>
 
             </div>
-            <ng-container *ngIf = "this.successAddToCardMessage.includes(product.id.toString())">
-              <p>{{this.successAddToCardMessage | slice:0:-2}}</p>
-            </ng-container>
+
           </ng-container>
         </div>
       </div>

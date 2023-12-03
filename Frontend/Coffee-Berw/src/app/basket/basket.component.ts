@@ -39,5 +39,6 @@ export class BasketComponent implements OnInit{
 
       }
     )
+    alert("deleted successfully");
   }
 }

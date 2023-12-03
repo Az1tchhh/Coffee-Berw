@@ -56,6 +56,11 @@ export class ProductDetailComponent implements OnInit{
         })
   }
   submit(comment: string){
+
+    if(!AppComponent.usernameID){
+      window.alert("You need to sign in!")
+      return;
+    }
     if(comment.length > 0){
       this.commentService.postCommentaryByUser(this.username, this.productId, comment).subscribe(
         data =>{

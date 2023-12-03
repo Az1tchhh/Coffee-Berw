@@ -27,9 +27,11 @@ export class RegistrationComponent {
         data => {
           console.log(data);
           this.success = "You registered successfully"
+          this.somethingWentWrong = "";
         },
         error => {
           this.somethingWentWrong = error;
+          this.success = ""
         })
     }
     else{

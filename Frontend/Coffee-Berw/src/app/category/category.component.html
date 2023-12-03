@@ -24,4 +24,16 @@
       </div>
     </div>
   </div>
+
+  <div class="box">
+    <span class="select-label">Sort by:</span>
+    <div class="custom-select" (click)="toggleDropdown('sort_by')">
+      <div class="select-selected">
+        {{ selectedSortBy || 'None' }}
+      </div>
+      <div class="select-items" [ngClass]="{ 'select-hide': !isDropdownOpen.sort_by }">
+        <div *ngFor="let sort of sorts_by" (click)="sortItemsByNumericProperty(sort)">{{ sort }}</div>
+      </div>
+    </div>
+  </div>
 </div>
