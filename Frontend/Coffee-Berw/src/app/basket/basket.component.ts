@@ -24,6 +24,11 @@ export class BasketComponent implements OnInit{
     })
 
   }
+
+  get totalSum(): number {
+    return this.basketList.reduce((sum, order) => sum + order.products.price, 0);
+  }
+
   delete(productId:number){
     this.basketService.deleteOrderOfTheUser(this.username, productId).subscribe(
       data=>{

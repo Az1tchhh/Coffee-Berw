@@ -46,14 +46,16 @@ export class ProductListComponent implements OnInit{
   addToCard(username:string, productId: number){
     console.log(productId)
     this.basketService.postOrderOfTheUser(username, productId).subscribe(
+    
       data=>{
-        this.successAddToCardMessage = "Product was added to your card " + productId
+        this.successAddToCardMessage = "Product was added to your card ";
       },
       error => {
         this.successAddToCardMessage = error +" "+ productId;
         console.log(this.successAddToCardMessage)
       }
     )
+    window.alert(this.successAddToCardMessage);
 
   }
 }
