@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {PaymentComponent} from "./payment/payment.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       {path: 'login', component: AuthenticationComponent},
       {path: 'registration', component: RegistrationComponent},
       {path: 'user/:id/basket', component: BasketComponent},
-      {path: 'product/:id', component: ProductDetailComponent}
+      {path: 'product/:id', component: ProductDetailComponent},
+      {path: 'payment', component:PaymentComponent}
     ]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

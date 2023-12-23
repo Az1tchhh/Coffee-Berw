@@ -19,11 +19,13 @@ export class BasketComponent implements OnInit{
   basketListOrig!:BasketWithProduct[]
   isLogged = AppComponent.isLogged
   deletedSuccessMessage:string = ""
+
   constructor(private basketService: BasketService,
-              private discountService: DiscountServiceService,
+              public discountService: DiscountServiceService,
               private router: Router) {
+
   }
-  disService = this.discountService;
+
   username = AppComponent.username
   ngOnInit(){
     this.basketService.getBasketOfTheUser(this.username).subscribe((data)=>{
@@ -31,7 +33,7 @@ export class BasketComponent implements OnInit{
       BasketComponent.discountPurchased = false;
       this.basketList = data.sort((a, b) => a.products.price - b.products.price);
     })
-    console.log(this.basketList);
+    console.log(this.basketList);console.log(BasketComponent.discountPurchased)
   }
 
   get totalSum(): number {
@@ -57,6 +59,7 @@ export class BasketComponent implements OnInit{
       return;
     }
     BasketComponent.discountPurchased = !BasketComponent.discountPurchased;
+    console.log(BasketComponent.discountPurchased)
     const len = this.basketList.length
     if(len == 0 || len == 1){
       this.discount = "";
@@ -76,9 +79,8 @@ export class BasketComponent implements OnInit{
     return;
   }
   toPurchasePage(){
-    BasketComponent.discountPurchased = true;
+
     if(this.basketList.length != 0)
-      this.discountService.purchaseDiscount(this.userId);
-      this.router.navigate(["/purchase"])
+      this.router.navigate(["payment"])
   }
 }
