@@ -3,6 +3,7 @@ import {Product} from "../models/Product";
 import {ProductService} from "../product.service";
 import {normalizePolyfills} from "@angular-devkit/build-angular/src/utils/normalize-polyfills";
 import {AppComponent} from "../app.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-top-bar',
@@ -14,7 +15,8 @@ export class TopBarComponent {
   searchText: string = '';
   products!: Product[];
   isLogged:boolean = AppComponent.isLogged;
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private router: Router) {
   }
   ngOnInit() {
     this.productService.getAllProducts().subscribe((data)=>{
@@ -39,6 +41,6 @@ export class TopBarComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('userId')
     AppComponent.isLogged = false;
-    window.location.reload();
+    this.router.navigate([""]);
   }
 }

@@ -11,20 +11,40 @@
           <h2>{{order.products.name}}</h2>
         </div>
         <div class = "product_price_box box-column">
-          <p><span class = "product_price">
+          <ng-container *ngIf="order.products.id == this.basketList[0].products.id">
+            <p><span class = "product_price" >
               {{order.products.price | currency: '₸'}}</span>
-          </p>
+            </p>{{this.discount}}
+          </ng-container>
+          <ng-container *ngIf="order.products.id != this.basketList[0].products.id">
+            <p><span class = "product_price">
+              {{order.products.price | currency: '₸'}}</span>
+            </p>
+          </ng-container>
+
         </div>
         <div class = "operation_box box-column">
           <div class = "delete_box box-row  ">
             <button class = "delete_button" (click)="delete(order.products.id)">Delete</button>
           </div>
-
         </div>
 
       </div>
       <div class="total-sum box-column">
-        <p style="font-weight: bold;">Total:  <span class="total-price">{{ totalSum | currency: '₸' }}</span></p>
+        <div *ngIf="!disService.checkDiscountAvailability(this.userId)">
+          <button
+                  class = "discount"> The discount will be available in one week.
+          </button>
+          <p style="font-weight: bold;">Total:  <span class="total-price">{{ totalSum | currency: '₸' }}</span></p>
+        </div>
+        <div *ngIf="disService.checkDiscountAvailability(this.userId)">
+          <button
+                  (click)="makeDiscount()"
+                  class = "discount"> Purchase Discount
+          </button>
+          <p style="font-weight: bold;">Total:  <span class="total-price">{{ totalSum | currency: '₸' }}</span></p>
+        </div>
+        <p (click)="toPurchasePage()" class = "purchase">Purchase</p>
       </div>
     </div>
   </div>

@@ -163,6 +163,7 @@
   text-align: right;
   font-size: 20px;
   margin-top: 20px;
+
 }
 
 .total-price {
@@ -171,4 +172,14 @@
   background-color: red;
   border-radius: 5px;
   padding: 0.7%;
+}
+.discount{
+  width: 200px;
+  height: 50px;
+}
+.discount:hover{
+  cursor: pointer;
+}
+.purchase:hover{
+  cursor: pointer;
 }
