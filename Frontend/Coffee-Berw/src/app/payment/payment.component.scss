@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+  background-color: #131516 ;
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
@@ -14,6 +14,7 @@ body {
   margin: 0 -16px;
   width: 100%;
   justify-content: center;
+  color: black;
 }
 
 .col-25,
@@ -69,6 +70,10 @@ label {
 
 a {
   color: #2196F3;
+}
+
+i {
+  padding: 2px;
 }
 
 hr {

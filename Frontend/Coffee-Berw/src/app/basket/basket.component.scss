@@ -163,6 +163,9 @@
   text-align: right;
   font-size: 20px;
   margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 
 }
 
@@ -172,14 +175,34 @@
   background-color: red;
   border-radius: 5px;
   padding: 0.7%;
+  
 }
 .discount{
   width: 200px;
   height: 50px;
+  font-size: 18px;
+  background-color: white;
+  align-items: center;
 }
 .discount:hover{
   cursor: pointer;
 }
 .purchase:hover{
   cursor: pointer;
+}
+.total{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pay{
+  justify-content: center;
+  display: flex;
+}
+
+.cl{
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }

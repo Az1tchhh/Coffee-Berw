@@ -35,16 +35,21 @@
           <button
                   class = "discount"> The discount will be available in one week.
           </button>
-          <p style="font-weight: bold;">Total:  <span class="total-price">{{ totalSum | currency: '₸' }}</span></p>
+          <div class="cl">
+          <p style="font-weight: bold;">Total:</p>
+          <span class="total-price">{{ totalSum | currency: '₸' }}</span>
         </div>
-        <div *ngIf="discountService.checkDiscountAvailability(this.userId)">
+        </div>
+        <div *ngIf="discountService.checkDiscountAvailability(this.userId)" class="total">
           <button
                   (click)="makeDiscount()"
                   class = "discount"> Purchase Discount
           </button>
           <p style="font-weight: bold;">Total:  <span class="total-price">{{ totalSum | currency: '₸' }}</span></p>
         </div>
+        <div class="pay">
         <p (click)="toPurchasePage()" class = "purchase">Purchase</p>
+        </div>
       </div>
     </div>
   </div>
